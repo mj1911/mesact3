@@ -1,0 +1,52 @@
+import os
+
+def load(parent):
+	parent.firmwareCB.clear()
+	parent.firmware_info_pte.clear()
+	#board = parent.boardCB.currentData()
+	path = os.path.join(parent.firmware_path, parent.board_hal_name)
+	if os.path.exists(path):
+		firmware = ['.bit', '.bin']
+		extensions = list(set(os.path.splitext(file)[-1] for file in os.listdir(path)))
+		if any(x in firmware for x in extensions):
+			files = sorted([entry.path for entry in os.scandir(path) if entry.is_file()])
+			parent.firmwareCB.addItem('Select', False)
+			for file in files:
+				if os.path.splitext(file)[1] in firmware:
+					parent.firmwareCB.addItem(os.path.basename(file), file)
+			parent.firmwarePTE.clear()
+			parent.firmwarePTE.appendPlainText(f'Firmware for {parent.boardCB.currentText()} Loaded')
+			if parent.read_hmid_gb.isEnabled(): # set mesaflash tools on if installed
+				parent.firmwareGB.setEnabled(True)
+		else:
+			noFirmware(parent, parent.board_hal_name)
+	else:
+		noFirmware(parent, parent.board_hal_name)
+
+
+def noFirmware(parent, board):
+	parent.firmwareTW.setCurrentIndex(1)
+	msg = (f'No Firmware found for the {board}\n'
+	'Downloads > Firmware from the menu if you have an Internet connection\n'
+	'The firmware will be to downloaded and installed\n'
+	f'in {os.path.expanduser("~")}/.local/lib/libmesact/{board}.\n\n'
+	'If you do not have an Internet connection\nfrom another computer download from \n'
+	f'https://github.com/jethornton/mesact_firmware/releases/download/1.0.0/{board}.tar.xz\n'
+	f'Extract the firmware to {os.path.expanduser("~")}/.local/lib/libmesact/{board}')
+	parent.firmwarePTE.setPlainText(msg)
+	parent.firmwareGB.setEnabled(False)
+	parent.firmwareCB.clear()
+
+	if parent.settings.value('NAGS/firmware', None, type=bool):
+		msg = (f'No Firmware was found for the {board}.\n'
+		'Do you want to download the firmware now?')
+		response, no_nag = dialogs.msg_yes_no_check('Firmware', msg, "Don't Check for Firmware Again!")
+		if response:
+			downloads.downloadFirmware(parent)
+		if no_nag:
+			parent.settings.setValue('NAGS/firmware', False)
+			parent.no_check_firmware_cb.setChecked(False)
+		else:
+			parent.settings.setValue('NAGS/firmware', True)
+			parent.no_check_firmware_cb.setChecked(True)
+

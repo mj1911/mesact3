@@ -1,0 +1,54 @@
+#!/usr/bin/env python3
+import sys, os
+
+# disable cache usage must be before any local imports
+sys.dont_write_bytecode = True
+
+from PyQt5.QtCore import QSettings
+from PyQt6.QtWidgets import QApplication, QMainWindow
+from PyQt6.uic import loadUi
+
+from libmesact import startup
+from libmesact import installed
+
+class MesaCT(QMainWindow):
+	def __init__(self):
+		super().__init__()
+
+		if os.path.split(sys.argv[0])[0] == '/usr/bin':
+			self.lib_path = '/usr/lib/libmesact'
+			self.docs_path = '/usr/share/doc/mesact'
+			self.installed = True
+			loadUi(os.path.join(self.lib_path, 'mesact.ui'), self)
+		else:
+			srcPath = os.path.split(os.path.realpath(sys.argv[0]))[0]
+			self.lib_path = os.path.join(srcPath, 'libmesact')
+			self.docs_path = srcPath
+			self.installed = False
+			loadUi(os.path.join(srcPath, 'mesact.ui'), self)
+		stylesheet = os.path.join(self.lib_path, 'mesact.qss')
+		with open(stylesheet,'r') as fh:
+			self.setStyleSheet(fh.read())
+
+		self.firmware_path = f'{os.path.expanduser("~")}/.local/lib/libmesact'
+		self.settings = QSettings('mesact3', 'mesact3')
+
+
+		self.show()
+		#startup.get_installed(self)
+		installed.check(self)
+		startup.hide(self)
+		startup.combos(self)
+		startup.connections(self)
+
+	def resizeEvent(self, event):
+		width = self.geometry().width()
+		height =  self.geometry().height()
+		self.sizeLB.setText(f'{width}x{height}')
+		QMainWindow.resizeEvent(self, event)
+
+
+app = QApplication(sys.argv)
+ex = MesaCT()
+sys.exit(app.exec())
+
