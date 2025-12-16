@@ -1,17 +1,21 @@
 #!/usr/bin/env python3
 import sys, os
-
+from functools import partial
 # disable cache usage must be before any local imports
 sys.dont_write_bytecode = True
 
-from PyQt5.QtCore import QSettings
-from PyQt6.QtWidgets import QApplication, QMainWindow
+from PyQt6.QtCore import QSettings, QTimer
+from PyQt6.QtWidgets import QApplication, QMainWindow, QWidget, QProgressBar
 from PyQt6.uic import loadUi
 
 from libmesact import startup
 from libmesact import installed
+from libmesact import downloads
 
-class MesaCT(QMainWindow):
+# remove after testing FIXME
+from libmesact import tests
+
+class mesact(QMainWindow):
 	def __init__(self):
 		super().__init__()
 
@@ -32,7 +36,9 @@ class MesaCT(QMainWindow):
 
 		self.firmware_path = f'{os.path.expanduser("~")}/.local/lib/libmesact'
 		self.settings = QSettings('mesact3', 'mesact3')
-
+		self.progressBar = QProgressBar()
+		self.statusBar().addPermanentWidget(self.progressBar)
+		self.timer=QTimer()
 
 		self.show()
 		#startup.get_installed(self)
@@ -40,6 +46,9 @@ class MesaCT(QMainWindow):
 		startup.hide(self)
 		startup.combos(self)
 		startup.connections(self)
+
+		# remove after testing FIXME
+		tests.connect(self)
 
 	def resizeEvent(self, event):
 		width = self.geometry().width()
@@ -49,6 +58,6 @@ class MesaCT(QMainWindow):
 
 
 app = QApplication(sys.argv)
-ex = MesaCT()
+window = mesact()
 sys.exit(app.exec())
 

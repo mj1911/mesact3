@@ -1,6 +1,7 @@
 
 
-from PyQt5.QtWidgets import QLineEdit, QComboBox, QDoubleSpinBox, QCheckBox
+from PyQt6.QtWidgets import QLineEdit, QComboBox, QDoubleSpinBox, QCheckBox
+from PyQt6.QtWidgets import QApplication, QFileDialog
 
 def new_config(parent):
 	# set main tab visibility
@@ -23,4 +24,19 @@ def new_config(parent):
 	parent.introGraphicLE.setText('emc2.gif')
 	parent.mainTW.setCurrentIndex(0)
 
+def select_dir(parent):
+	options = QFileDialog.Option.DontUseNativeDialog
+	dir_path = False
+	file_dialog = QFileDialog()
+	print('here')
+	file_dialog.setFileMode(QFileDialog.FileMode.ExistingFile)
+	file_dialog.setOptions(QFileDialog.Option.DontUseNativeDialog)
+	file_dialog.setWindowTitle('Open File')
+	dir_path, file_type = file_dialog.getOpenFileName(None,
+	caption=caption, directory=parent.nc_code_dir,
+	filter=parent.ext_filter, options=options)
+	if dir_path:
+		return dir_path
+	else:
+		return False
 

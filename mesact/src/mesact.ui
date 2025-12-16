@@ -42,7 +42,7 @@
        </size>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>12</number>
       </property>
       <widget class="QWidget" name="tab">
        <attribute name="title">
@@ -233,7 +233,7 @@
             </widget>
            </item>
            <item row="10" column="1">
-            <widget class="QLabel" name="pyqt5LB">
+            <widget class="QLabel" name="pyqt_lb">
              <property name="frameShape">
               <enum>QFrame::Box</enum>
              </property>
@@ -268,7 +268,7 @@
            <item row="10" column="0">
             <widget class="QLabel" name="label_1480">
              <property name="text">
-              <string>PyQt5</string>
+              <string>PyQt</string>
              </property>
              <property name="alignment">
               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -43842,8 +43842,8 @@ to File Open in Axis</string>
                    <rect>
                     <x>0</x>
                     <y>0</y>
-                    <width>36</width>
-                    <height>18</height>
+                    <width>98</width>
+                    <height>28</height>
                    </rect>
                   </property>
                   <layout class="QGridLayout" name="mdiCommandsListGL"/>
@@ -45000,6 +45000,99 @@ auto enp2s0
         </item>
        </layout>
       </widget>
+      <widget class="QWidget" name="tab_21">
+       <attribute name="title">
+        <string>Test</string>
+       </attribute>
+       <layout class="QHBoxLayout" name="horizontalLayout">
+        <item>
+         <widget class="QGroupBox" name="groupBox_6">
+          <property name="title">
+           <string>Dialogs</string>
+          </property>
+          <layout class="QVBoxLayout" name="verticalLayout_64">
+           <item>
+            <widget class="QPushButton" name="msg_open_abort_cancel_pb">
+             <property name="text">
+              <string>msg_open_abort_cancel</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="msg_open_cancel_pb">
+             <property name="text">
+              <string>msg_open_cancel</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="msg_cancel_ok_pb">
+             <property name="text">
+              <string>msg_cancel_ok</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="msg_error_ok_pb">
+             <property name="text">
+              <string>msg_error_ok</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="msg_question_pb">
+             <property name="text">
+              <string>msg_question</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="msg_yes_no_pb">
+             <property name="text">
+              <string>msg_yes_no</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="msg_yes_no_check_pb">
+             <property name="text">
+              <string>msg_yes_no_check</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="msg_ok_pb">
+             <property name="text">
+              <string>msg_ok</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item>
+         <widget class="QGroupBox" name="groupBox_51">
+          <property name="title">
+           <string>GroupBox</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QGroupBox" name="groupBox_83">
+          <property name="title">
+           <string>GroupBox</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QGroupBox" name="groupBox_96">
+          <property name="title">
+           <string>GroupBox</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
      </widget>
     </item>
    </layout>
@@ -45106,16 +45199,6 @@ auto enp2s0
     <string>Build Config</string>
    </property>
   </action>
-  <action name="actionEnglish">
-   <property name="text">
-    <string>English</string>
-   </property>
-  </action>
-  <action name="actionGerman">
-   <property name="text">
-    <string>Deutsch</string>
-   </property>
-  </action>
   <action name="actionCheckUpdates">
    <property name="text">
     <string>Check for Updates</string>
@@ -45126,26 +45209,6 @@ auto enp2s0
     <string>About MesaCT</string>
    </property>
   </action>
-  <action name="actionOpen_1">
-   <property name="text">
-    <string>Open 7i96S</string>
-   </property>
-  </action>
-  <action name="actionOpen_2">
-   <property name="text">
-    <string>Open 2</string>
-   </property>
-  </action>
-  <action name="actionOpen_3">
-   <property name="text">
-    <string>Open 3</string>
-   </property>
-  </action>
-  <action name="actionOpen_3G">
-   <property name="text">
-    <string>Open 3G</string>
-   </property>
-  </action>
   <action name="actionNew">
    <property name="text">
     <string>New</string>
@@ -45154,11 +45217,6 @@ auto enp2s0
   <action name="actionDocuments">
    <property name="text">
     <string>Documents</string>
-   </property>
-  </action>
-  <action name="actionTest">
-   <property name="text">
-    <string>Test</string>
    </property>
   </action>
  </widget>

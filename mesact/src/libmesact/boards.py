@@ -32,6 +32,12 @@ def changed(parent, index):
 			set_io(parent, None, False, False, None, False, False)
 			parent.mesaflash_name = '5i25'
 			parent.mesaflash_version = '3.4.2'
+			info = ('Connector 5v Power\n'
+			'W1 Up for P2\n'
+			'W2 Up for P3\n'
+			'\nDefault Firmware 5i25_g540x2.bit\n')
+			parent.board_info_pte.setPlainText(info)
+
 		case 2: # 5i25T 2 25 pin expansion ports
 			print('5i25T selected')
 			address(parent, None)
@@ -39,7 +45,18 @@ def changed(parent, index):
 			set_drives(parent, 0)
 			set_io(parent, None, False, False, None, False, False)
 			parent.mesaflash_name = '5i25t'
+			parent.mesaflash_version = '3.4.8'
 			# parent.mesaflash_version = 'FIXME'
+			info = ('Connector 5v Power\n'
+			'W1 Up for P1\n'
+			'W2 Up for P3\n'
+			'\nDefault Firmware 5i25_g540x2.bit\n'
+			'\nIf the PC will not boot up with the 5i25T installed\n'
+			'disable PCI #SERR generation in the BIOS setup\n'
+			'\nDo not write the fallback configuration to a\n'
+			'5I25T unless you know _exactly_ what you are doing')
+			parent.board_info_pte.setPlainText(info)
+
 		case 3: # 6i25 2 25 pin expansion ports
 			print('6i25 selected')
 			address(parent, None)
@@ -48,6 +65,12 @@ def changed(parent, index):
 			set_io(parent, None, False, False, None, False, False)
 			parent.mesaflash_name = '5i25'
 			parent.mesaflash_version = '3.4.2'
+			info = ('Connector 5v Power\n'
+			'W1 Up for P2\n'
+			'W2 Up for P3\n'
+			'\nDefault Firmware 5i25_g540x2.bit\n')
+			parent.board_info_pte.setPlainText(info)
+
 		case 4: # 7c80 1 25 pin expansion port
 			# 6 step/dir 24 inputs 8 outputs 1 potentiometer spindle 1 encoder
 			print('7c80 selected')
@@ -57,6 +80,12 @@ def changed(parent, index):
 			set_io(parent, 24, False, False, 8, False, False)
 			parent.mesaflash_name = '7c80'
 			parent.mesaflash_version = '3.4.2'
+			info = ('7c80 uses SPI for communications.\n'
+			'The Rpi 5 requires hm2_spix which is available\nin LinuxCNC version 2.9.4 or newer\n'
+			'The Rpi 4 will work with hm2_spix or hm2_spi\nwhich is in older versions of LinuxCNC\n'
+			'\nDefault Firmware 7c80d.bit\n')
+			parent.board_info_pte.setPlainText(info)
+
 		case 5: # 7c81 3 25 pin expansion ports
 			print('7c81 selected')
 			address(parent, 'spi')
@@ -65,6 +94,12 @@ def changed(parent, index):
 			set_io(parent, None, False, False, None, False, False)
 			parent.mesaflash_name = '7c81'
 			parent.mesaflash_version = '3.4.2'
+			info = ('7c81 uses SPI for communications.\n'
+				'The Rpi 5 requires hm2_spix which is available in\nLinuxCNC version 2.9.4 or newer\n'
+				'The Rpi 4 will work with hm2_spix or hm2_spi\nwhich is in older versions of LinuxCNC'
+				'\nDefault Firmware 7c81_g540x2d.bit\n')
+			parent.board_info_pte.setPlainText(info)
+
 		case 6: # 7i76E 2 25 pin expansion ports
 			#5 step/dir 32 inputs 16 outputs 1 potentiometer spindle 1 encoder
 			print('7i76E selected')
@@ -74,6 +109,13 @@ def changed(parent, index):
 			set_io(parent, 32, True, False, 16, True, False)
 			parent.mesaflash_name = '7i76e'
 			parent.mesaflash_version = '3.4.2'
+			info = ('Connector 5v Power\n'
+			'W7 Up for P1\n'
+			'W12 Up for P2\n'
+			'\nIP Address\nW2 Down W3 Up for 10.10.10.10\n'
+			'\nDefault Firmware 7i76e_7i76x1D.bit\n')
+			parent.board_info_pte.setPlainText(info)
+
 		case 7: # 7i76EU 2 25 pin expansion ports
 			#5 step/dir 32 inputs 16 outputs 1 potentiometer spindle 1 encoder
 			print('7i76EU selected')
@@ -83,6 +125,17 @@ def changed(parent, index):
 			set_io(parent, 32, True, False, 16, True, True)
 			parent.mesaflash_name = '7i76eu'
 			parent.mesaflash_version = '3.5.2'
+			info = ('Connector 5v Power\n'
+			'W3 Up for P1\n'
+			'W15 Up for P2\n'
+			'\nIP Address\nW13 Down W14 Up for 10.10.10.10\n'
+			'\nDefault Firmware 7i76eu_7i76x1dpl.bin\n'
+			'\nOutputs can be Source, Sink or Push Pull\n'
+			'Outputs do not require flyback diodes\n'
+			'\nTB4 Spindle pins can be ENA & DIR or FWD & REV\n'
+			)
+			parent.board_info_pte.setPlainText(info)
+
 		case 8: # 7i92 2 25 pin expansion ports
 			print('7i92 selected')
 			address(parent, 'ip')
@@ -91,6 +144,16 @@ def changed(parent, index):
 			set_io(parent, None, False, False, None, False, False)
 			parent.mesaflash_name = '7i92'
 			parent.mesaflash_version = '3.4.2'
+			info = ('Connector 5v Power\n'
+			'W3 Up for P1\n'
+			'W4 Up for P2\n'
+			'\nIP Address Settings\n'
+			'W5 Down W6 Up for 10.10.10.10\n'
+			'Power off before moving jumpers\n'
+			'\nDefault firmware 7i92_G540x2D.bit'
+			)
+			parent.board_info_pte.setPlainText(info)
+
 		case 9: # 7i92T 2 25 pin expansion ports
 			print('7i92T selected')
 			address(parent, 'ip')
@@ -99,16 +162,31 @@ def changed(parent, index):
 			set_io(parent, None, False, False, None, False, False)
 			parent.mesaflash_name = '7i92t'
 			parent.mesaflash_version = '3.4.5'
+			info = ('Connector 5v Power\n'
+			'W3 Up for P1\n'
+			'W4 Up for P2\n'
+			'\nIP Address Settings\n'
+			'W5 Down W6 Up for 10.10.10.10\n'
+			'Power off before moving jumpers\n'
+			'\nDefault firmware 7i92t_g540d.bin'
+			)
+			parent.board_info_pte.setPlainText(info)
+
 		case 10: # 7i95 1 25 pin expansion port
 			# 6 step/dir, 6 encoders, 24 inputs 6 outputs
 			print('7i95 selected')
 			address(parent, 'ip')
 			daughter_boards(parent, 'P1' , None)
-			# FIXME check for invert etc
+			# FIXME check for invert etc 7i95_d.bit
+			# inputs invert and slow, output invert
 			set_drives(parent, 6)
-			set_io(parent, 24, False, False, 6, False, False)
+			set_io(parent, 24, True, True, 6, True, False)
 			parent.mesaflash_name = '7i95'
 			parent.mesaflash_version = '3.4.2'
+			info = ('IP Address Jumpers\nW16 Down W17 Up for 10.10.10.10\n'
+			'\nDefault firmware 7i95_d.bit')
+			parent.board_info_pte.setPlainText(info)
+
 		case 11: # 7i95T 1 25 pin expansion port
 			# 6 step/dir, 6 encoders, 24 inputs 6 outputs
 			print('7i95T selected')
@@ -118,6 +196,13 @@ def changed(parent, index):
 			set_io(parent, 24, False, False, 6, False, False)
 			parent.mesaflash_name = '7i95t'
 			parent.mesaflash_version = '3.4.7'
+			info = ('The 7i95T requires LinuxCNC version 2.10 or newer to run\n'
+			'\nTo Flash the 7i95T Mesaflash version 3.4.7\nor newer must be installed\n'
+			'\nIP Address Jumpers\nW15 Down W16 Up for 10.10.10.10\n'
+			'\nDefault firmware 7i95t_d.bin'
+			)
+			parent.board_info_pte.setPlainText(info)
+
 		case 12: # 7i96 1 25 pin expansion port
 			# 5 step/dir, 11 inputs 6 outputs
 			print('7i96 selected')
@@ -127,6 +212,13 @@ def changed(parent, index):
 			set_io(parent, 11, False, False, 6, False, False)
 			parent.mesaflash_name = '7i96'
 			parent.mesaflash_version = '3.4.2'
+			info = ('Connector 5v Power\n'
+			'W8 Up for P1\n'
+			'\nIP Address\nW5 Down W6 Up for 10.10.10.10\n'
+			'\nDefault Firmware 7i96d.bit\n'
+			)
+			parent.board_info_pte.setPlainText(info)
+
 		case 13: # 7i96S 1 25 pin expansion port
 			# 5 step/dir, 11 inputs 6 outputs 1 potentiometer spindle 1 encoder
 			print('7i96S selected')
@@ -136,6 +228,12 @@ def changed(parent, index):
 			set_io(parent, 11, False, False, 6, False, False)
 			parent.mesaflash_name = '7i96s'
 			parent.mesaflash_version = '3.4.2'
+			info = ('Expansion Connector 5v Power W6 Up for P1\n'
+			'\nIP Address W4 Down W5 Up for 10.10.10.10\n'
+			'\nDefault Firmware 7i96s_d.bit\n'
+			)
+			parent.board_info_pte.setPlainText(info)
+
 		case 14: # 7i97 1 25 pin expansion port
 			# 6 analog/encoder 16 inputs 6 outputs
 			print('7i97 selected')
@@ -145,6 +243,12 @@ def changed(parent, index):
 			set_io(parent, 16, False, False, 6, False, False)
 			parent.mesaflash_name = '7i97'
 			parent.mesaflash_version = '3.4.2'
+			info = ('Breakout 5v Power W23 Up for P1\n'
+			'\nIP Address W16 Down W17 Up for 10.10.10.10\n'
+			'\nDefault Firmware 7i97_D.bit\n'
+			)
+			parent.board_info_pte.setPlainText(info)
+
 		case 15: # 7i97T 1 25 pin expansion port
 			# 6 analog/encoder 16 inputs 6 outputs
 			address(parent, 'ip')
@@ -154,6 +258,18 @@ def changed(parent, index):
 			set_drives(parent, 6)
 			set_io(parent, 16, False, False, 6, False, False)
 			parent.mesaflash_name = '7i97t'
+			info = ('The 7i97T requires LinuxCNC version 2.10 or newer to run\n'
+			'\nTo Flash the 7i97T Mesaflash version 3.5.3\nor newer must be installed\n'
+			'\nIP Address Jumpers\nW11 Down W12 Up for 10.10.10.10\n'
+			'\nDefault firmware 7i97t_d.bin\n'
+			'\nIMPORTANT! Verify the following before running\n'
+			'\nVerify encoders working, scaled right and in the right direction\n'
+			'\nVerify drive enables are controlled by linuxcnc\n'
+			'\nSet per axis following error limits wide enough to allow tuning (say 1 inch or 25 mm)\n'
+			'\nExpect runaways you may have to change the sign of the analog outputs\n'
+			)
+			parent.board_info_pte.setPlainText(info)
+
 		case 16: # 7i98 3 25 pin expansion ports
 			print('7i98 selected')
 			address(parent, 'ip')
@@ -161,7 +277,9 @@ def changed(parent, index):
 			set_drives(parent, 0)
 			set_io(parent, None, False, False, None, False, False)
 			parent.mesaflash_name = '7i98'
-
+			info = ('IP Address W8 Down W9 Up for 10.10.10.10\n'
+			'\nDefault Firmware 7i98_g540x3d.bit\n')
+			parent.board_info_pte.setPlainText(info)
 
 def address(parent, type):
 	match type:

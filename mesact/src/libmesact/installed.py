@@ -2,7 +2,7 @@ import os, subprocess, sysconfig
 from threading import Thread
 from platform import python_version
 
-from PyQt5.QtCore import qVersion
+from PyQt6.QtCore import qVersion
 
 def versions(parent):
 	try: # need to set this before building combos
@@ -78,7 +78,7 @@ def versions(parent):
 
 	parent.platformLB.setText(sysconfig.get_platform())
 	parent.pythonLB.setText(python_version())
-	parent.pyqt5LB.setText(qVersion())
+	parent.pyqt_lb.setText(qVersion())
 
 def check(parent):
 	get_versions = Thread(target=versions, args=(parent,))

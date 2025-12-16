@@ -1,0 +1,19 @@
+
+scale max sets the 0 to full rpm scale
+min/max limit just limit the output
+
+<JT-Cave> pcw--home, 7i76e(u) should hm2_7i76e.0.7i76.0.0.spinout-minlim be set
+to 0 and the ini MIN_FORWARD_VELOCITY be set to some minimum rpm so the scaling
+is correct?
+
+<JT-Cave> for  example if your spindle is 1000 max but unhappy below 250 and you
+have 0-10v spindle would the scaling be off if you set the hardware limit to 250?
+
+<JT-Cave> ie s500 should be 5v
+
+<pcw--home> Yes, that's commonly done with high speed spindles, It does not
+affect the scaling (the scalemax parameter sets the scaling)
+
+<pcw--home> sometimes maxlim is set also (say you have a 0..10V VFD control but
+a 12V power supply)
+<JT-Shop> thanks

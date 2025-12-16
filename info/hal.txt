@@ -1,0 +1,82 @@
+
+In a terminal
+halrun
+loadrt hostmot2
+
+for ethernet
+loadrt hm2_eth board_ip=10.10.10.10
+
+for pci(e)
+loadrt hm2_pci
+
+for smart serial cards
+setp hm2_5i25.0.watchdog.timeout_ns 5000000
+
+# motion controller
+loadrt motmod servo_period_nsec=1000000 num_joints=[KINS](JOINTS)
+
+# THREADS
+addf hm2_5i25.0.read servo-thread
+addf motion-command-handler servo-thread
+addf motion-controller servo-thread
+addf pid.x.do-pid-calcs servo-thread
+addf hm2_5i25.0.write servo-thread
+
+
+after getting pins and parameters
+quit
+
+In another terminal
+halcmd show all hm2 > 7i76E-pins.txt
+halcmd show all hm2 > 7i76E-7i76-P1-pins.txt
+halcmd show all hm2 > 7i76E-7i76-P2-pins.txt
+halcmd show all hm2 > 7i76E-7i77-P1-pins.txt
+halcmd show all hm2 > 7i76E-7i77-P2-pins.txt
+
+halcmd show all hm2 > 7i76EU-pins.txt
+halcmd show all hm2 > 7i76EU-7i76-P1-pins.txt
+halcmd show all hm2 > 7i76EU-7i76-P2-pins.txt
+halcmd show all hm2 > 7i76EU-7i77-P1-pins.txt
+halcmd show all hm2 > 7i76EU-7i77-P2-pins.txt
+
+halcmd show all hm2 > 7i92T-7i76-P1-pins.txt
+halcmd show all hm2 > 7i92T-7i76-P2-pins.txt
+halcmd show all hm2 > 7i92T-7i77-P1-pins.txt
+halcmd show all hm2 > 7i92T-7i77-P2-pins.txt
+halcmd show all hm2 > 7i92T-7i77-7i83-pins.txt
+halcmd show all hm2 > 7i92T-7i77-7i76-pins.txt
+halcmd show all hm2 > 7i92T-7i78-P1-pins.txt
+halcmd show all hm2 > 7i92T-7i78-P2-pins.txt
+
+halcmd show all hm2 > 7i95-hm2-pins.txt
+
+halcmd show all hm2 > 7i95T-hm2-pins.txt
+halcmd show all > 7i95T-all-pins.txt
+
+
+halcmd show all hm2 > 7i96-pins.txt
+
+halcmd show all hm2 > 7i96S-pins.txt
+halcmd show all hm2 > 7i96S-7i76-pins.txt
+halcmd show all hm2 > 7i96S-7i77-pins.txt
+halcmd show all hm2 > 7i96S-7i85-pins.txt
+halcmd show all hm2 > 7i96S-7i85S-pins.txt
+
+halcmd show all hm2 > 7i97-pins.txt
+halcmd show all hm2 > 7i97_D.txt
+
+halcmd show all hm2 > 7i97t_d.txt
+
+
+for pci
+In a terminal
+halrun
+loadrt hostmot2
+loadrt hm2_pci
+after getting pins and parameters
+quit
+
+In another terminal
+halcmd show all hm2 > 5i25-7i76-pins.txt
+halcmd show all hm2 > 5i25-7i77-pins.txt
+
