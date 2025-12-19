@@ -49,7 +49,7 @@ class Downloader(QThread):
 
 def download_firmware(parent):
 	# print(f' {}')
-	board = parent.boardCB.currentData()
+	board = parent.board_cb.currentData()
 	if board:
 		url = f'https://github.com/jethornton/mesact_firmware/releases/download/1.0.0/{board}.tar.xz'
 		exists, error = url_exists(url)

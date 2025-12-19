@@ -1,4 +1,4 @@
-
+import os
 
 from PyQt6.QtWidgets import QLineEdit, QComboBox, QDoubleSpinBox, QCheckBox
 from PyQt6.QtWidgets import QApplication, QFileDialog
@@ -47,5 +47,12 @@ def open_manual(parent):
 		doc = os.path.join(parent.docs_path, 'mesact.pdf')
 	subprocess.call(('xdg-open', doc))
 
+def machine_name_changed(parent, text):
+	if text:
+		parent.machine_name_underscored = text.replace(' ','_').lower()
+		parent.configPath = os.path.expanduser('~/linuxcnc/configs') + '/' + parent.machine_name_underscored
+		parent.config_path_lb.setText(parent.configPath)
+	else:
+		parent.pathLabel.setText('')
 
 

@@ -460,7 +460,7 @@
              </property>
              <layout class="QGridLayout" name="gridLayout_3">
               <item row="1" column="0">
-               <widget class="QComboBox" name="daughterCB_1"/>
+               <widget class="QComboBox" name="daughter_1_cb"/>
               </item>
               <item row="0" column="1">
                <widget class="QLabel" name="label_6">
@@ -473,10 +473,10 @@
                </widget>
               </item>
               <item row="2" column="0">
-               <widget class="QComboBox" name="daughterCB_2"/>
+               <widget class="QComboBox" name="daughter_2_cb"/>
               </item>
               <item row="1" column="1">
-               <widget class="QLabel" name="daughterLB_1">
+               <widget class="QLabel" name="daughter_1_lb">
                 <property name="maximumSize">
                  <size>
                   <width>100</width>
@@ -495,7 +495,7 @@
                </widget>
               </item>
               <item row="2" column="1">
-               <widget class="QLabel" name="daughterLB_2">
+               <widget class="QLabel" name="daughter_2_lb">
                 <property name="maximumSize">
                  <size>
                   <width>100</width>
@@ -544,7 +544,7 @@
             </widget>
            </item>
            <item row="0" column="2">
-            <widget class="QComboBox" name="boardCB"/>
+            <widget class="QComboBox" name="board_cb"/>
            </item>
            <item row="4" column="1">
             <widget class="QPushButton" name="find_ip_board_pb">
@@ -596,7 +596,7 @@
             <number>9</number>
            </property>
            <item row="0" column="3" colspan="2">
-            <widget class="QLineEdit" name="configNameLE">
+            <widget class="QLineEdit" name="machine_name_le">
              <property name="sizePolicy">
               <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
                <horstretch>0</horstretch>
@@ -611,7 +611,7 @@ Spaces are replaced with underscore.</string>
             </widget>
            </item>
            <item row="1" column="3" colspan="2">
-            <widget class="QLabel" name="pathLabel">
+            <widget class="QLabel" name="config_path_lb">
              <property name="sizePolicy">
               <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
                <horstretch>0</horstretch>
@@ -865,7 +865,7 @@ QGroupBox::title {
                 <number>15</number>
                </property>
                <item row="1" column="0">
-                <widget class="QComboBox" name="firmwareCB">
+                <widget class="QComboBox" name="firmware_cb">
                  <property name="sizePolicy">
                   <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
                    <horstretch>0</horstretch>
@@ -12396,7 +12396,7 @@ Leave blank to home the joint manually.</string>
         <item>
          <widget class="QTabWidget" name="joint_tw_4">
           <property name="currentIndex">
-           <number>0</number>
+           <number>8</number>
           </property>
           <widget class="QWidget" name="tab_52">
            <attribute name="title">
@@ -22789,7 +22789,7 @@ Leave blank to home the joint manually.</string>
         <item>
          <widget class="QTabWidget" name="joint_tw_5">
           <property name="currentIndex">
-           <number>0</number>
+           <number>7</number>
           </property>
           <widget class="QWidget" name="tab_86">
            <attribute name="title">
@@ -45526,13 +45526,13 @@ auto enp2s0
  </widget>
  <tabstops>
   <tabstop>mainTW</tabstop>
-  <tabstop>configNameLE</tabstop>
+  <tabstop>machine_name_le</tabstop>
   <tabstop>load_config_cb</tabstop>
   <tabstop>backupCB</tabstop>
-  <tabstop>boardCB</tabstop>
+  <tabstop>board_cb</tabstop>
   <tabstop>address_cb</tabstop>
-  <tabstop>daughterCB_1</tabstop>
-  <tabstop>daughterCB_2</tabstop>
+  <tabstop>daughter_1_cb</tabstop>
+  <tabstop>daughter_2_cb</tabstop>
   <tabstop>default_imperial_pb</tabstop>
   <tabstop>default_metric_pb</tabstop>
   <tabstop>set_7i96s_x_pb</tabstop>
@@ -45544,7 +45544,7 @@ auto enp2s0
   <tabstop>find_ip_board_pb</tabstop>
   <tabstop>verify_board_pb</tabstop>
   <tabstop>verifyPTE</tabstop>
-  <tabstop>firmwareCB</tabstop>
+  <tabstop>firmware_cb</tabstop>
   <tabstop>flashPB</tabstop>
   <tabstop>reloadPB</tabstop>
   <tabstop>verifyPB</tabstop>

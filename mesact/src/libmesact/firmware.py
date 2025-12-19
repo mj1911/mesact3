@@ -1,19 +1,19 @@
 import os
 
 def load(parent):
-	parent.firmwareCB.clear()
+	parent.firmware_cb.clear()
 	parent.firmware_info_pte.clear()
-	#board = parent.boardCB.currentData()
+	#board = parent.board_cb.currentData()
 	path = os.path.join(parent.firmware_path, parent.board_hal_name)
 	if os.path.exists(path):
 		firmware = ['.bit', '.bin']
 		extensions = list(set(os.path.splitext(file)[-1] for file in os.listdir(path)))
 		if any(x in firmware for x in extensions):
 			files = sorted([entry.path for entry in os.scandir(path) if entry.is_file()])
-			parent.firmwareCB.addItem('Select', False)
+			parent.firmware_cb.addItem('Select', False)
 			for file in files:
 				if os.path.splitext(file)[1] in firmware:
-					parent.firmwareCB.addItem(os.path.basename(file), file)
+					parent.firmware_cb.addItem(os.path.basename(file), file)
 			parent.firmwarePTE.clear()
 			parent.firmwareTW.setCurrentIndex(0)
 			if parent.read_hmid_gb.isEnabled(): # set mesaflash tools on if installed
@@ -35,7 +35,7 @@ def noFirmware(parent, board):
 	f'Extract the firmware to {os.path.expanduser("~")}/.local/lib/libmesact/{board}')
 	parent.firmwarePTE.setPlainText(msg)
 	parent.firmwareGB.setEnabled(False)
-	parent.firmwareCB.clear()
+	parent.firmware_cb.clear()
 
 	if parent.settings.value('NAGS/firmware', None, type=bool):
 		msg = (f'No Firmware was found for the {board}.\n'

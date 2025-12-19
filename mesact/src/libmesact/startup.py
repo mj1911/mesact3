@@ -31,7 +31,7 @@ def combos(parent):
 	]
 
 	for item in boards:
-		parent.boardCB.addItem(item[0], item[1])
+		parent.board_cb.addItem(item[0], item[1])
 
 	# Settings Tab
 	gui = [

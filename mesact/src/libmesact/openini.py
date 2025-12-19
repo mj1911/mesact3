@@ -36,10 +36,10 @@ def open_ini(parent):
 
 	if '[MESA]' in sections:
 		mesa = {}
-		mesa['BOARD_NAME'] = 'boardCB'
-		mesa['FIRMWARE'] = 'firmwareCB'
-		mesa['CARD_0'] = 'daughterCB_0'
-		mesa['CARD_1'] = 'daughterCB_1'
+		mesa['BOARD_NAME'] = 'board_cb'
+		mesa['FIRMWARE'] = 'firmware_cb'
+		mesa['CARD_1'] = 'daughter_1_cb'
+		mesa['CARD_2'] = 'daughter_2_cb'
 
 		start = sections['[MESA]'][0]
 		end = sections['[MESA]'][1]
@@ -51,7 +51,7 @@ def open_ini(parent):
 
 	if '[EMC]' in sections:
 		emc = {}
-		emc['MACHINE'] = 'configNameLE'
+		emc['MACHINE'] = 'config_name_le'
 		emc['DEBUG'] = 'debugCB'
 
 		start = sections['[EMC]'][0]

@@ -67,8 +67,9 @@ def connect(parent):
 
 
 	# Machine Tab
-	parent.boardCB.currentIndexChanged.connect(partial(boards.changed, parent))
-	parent.daughterCB_1.currentIndexChanged.connect(partial(daughters.changed, parent, 4))
-	parent.daughterCB_2.currentIndexChanged.connect(partial(daughters.changed, parent, 5))
+	parent.machine_name_le.textChanged[str].connect(partial(utilities.machine_name_changed, parent))
+	parent.board_cb.currentIndexChanged.connect(partial(boards.changed, parent))
+	parent.daughter_1_cb.currentIndexChanged.connect(partial(daughters.changed, parent, 4))
+	parent.daughter_2_cb.currentIndexChanged.connect(partial(daughters.changed, parent, 5))
 
 

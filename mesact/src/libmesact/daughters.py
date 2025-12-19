@@ -1,33 +1,39 @@
 
 
 def changed(parent, tab, index):
+	board = parent.sender().currentData()
+	#print(f'board {board}')
+	index = parent.sender().currentIndex()
 	#print(f'index {index}')
-	io = int(parent.sender().objectName()[-1])
-	print(io)
-	return
-	#print(tab)
-	#print(parent.sender().currentText())
-	match index:
-		case 0:
+	if parent.sender().objectName() == 'daughter_1_cb':
+		tab = 4
+		io = 1
+	elif parent.sender().objectName() == 'daughter_2_cb':
+		tab = 5
+		io = 2
+
+	# FIXME might be better to match the board name and board would be false if not selected
+	match board:
+		case False:
 			parent.mainTW.setTabVisible(tab, False)
 			parent.mainTW.setTabText(tab, '')
-		case 1: # 7i76
+		case '7i76': # 7i76
 			# 5 step/dir 32 inputs 16 outputs 1 potentiometer spindle 1 encoder
 			print('7i76 selected')
 			set_drives(parent, 5, tab)
 			set_io(parent, io, 32, True, False, 16, True, False)
-		case 2: # 7i77
+		case '7i77': # 7i77 FIXME add set_io
 			# 6 analog 32 inputs 16 outputs 1 potentiometer spindle 1 encoder
 			print('7i77 selected')
 			set_drives(parent, 6, tab)
-		case 3: # 7i78
+		case '7i78': # 7i78
 			# 4 step/dir 0 inputs 0 outputs
 			print('7i78 selected')
 			set_drives(parent, 4, tab)
-		case 4: # 7i85
+		case '7i85': # 7i85
 			print('7i85 selected')
 			set_drives(parent, 5, tab) # FIXME dunno what this board has
-		case 5: # 7i85S
+		case '7i85s': # 7i85S
 			print('7i85S selected')
 			set_drives(parent, 5, tab)
 
@@ -57,7 +63,8 @@ def set_io(parent, io, inputs, i_invert, i_debounce, outputs, o_invert, o_dir):
 	for i in range(16):
 		getattr(parent, f'c{io}_output_{i}').setEnabled(False)
 		getattr(parent, f'c{io}_output_invert_{i}').setVisible(False)
-		getattr(parent, f'c{io}_output_type_{i}').setVisible(False)
+		# FIXME the newer daughter boards may have this so add to ui
+		#getattr(parent, f'c{io}_output_type_{i}').setVisible(False)
 
 	if inputs:
 		parent.joint_tw_3.setTabVisible(7, True)

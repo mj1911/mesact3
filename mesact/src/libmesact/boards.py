@@ -6,8 +6,8 @@ from libmesact import firmware
 def changed(parent, index):
 
 	if index > 0: # set common items for all boards
-		parent.board_name = parent.boardCB.currentText()
-		parent.board_hal_name = parent.boardCB.currentData()
+		parent.board_name = parent.board_cb.currentText()
+		parent.board_hal_name = parent.board_cb.currentData()
 		parent.mainTW.setTabVisible(3, True)
 		parent.mainTW.setTabText(3, parent.board_name)
 		parent.joint_tw_3.setTabText(0, parent.board_name)
@@ -324,26 +324,26 @@ def daughter_boards(parent, port_1 , port_2):
 	['7i85S', '7i85s']
 	]
 
-	parent.daughterCB_1.blockSignals(True)
-	parent.daughterCB_2.blockSignals(True)
+	parent.daughter_1_cb.blockSignals(True)
+	parent.daughter_2_cb.blockSignals(True)
 
-	parent.daughterCB_1.clear()
-	parent.daughterLB_1.clear()
-	parent.daughterCB_2.clear()
-	parent.daughterLB_2.clear()
+	parent.daughter_1_cb.clear()
+	parent.daughter_1_lb.clear()
+	parent.daughter_2_cb.clear()
+	parent.daughter_2_lb.clear()
 
 	if port_1:
-		parent.daughterLB_1.setText(port_1)
+		parent.daughter_1_lb.setText(port_1)
 		for item in boards:
-			parent.daughterCB_1.addItem(item[0], item[1])
+			parent.daughter_1_cb.addItem(item[0], item[1])
 
 	if port_2:
-		parent.daughterLB_2.setText(port_2)
+		parent.daughter_2_lb.setText(port_2)
 		for item in boards:
-			parent.daughterCB_2.addItem(item[0], item[1])
+			parent.daughter_2_cb.addItem(item[0], item[1])
 
-	parent.daughterCB_1.blockSignals(False)
-	parent.daughterCB_2.blockSignals(False)
+	parent.daughter_1_cb.blockSignals(False)
+	parent.daughter_2_cb.blockSignals(False)
 
 def set_drives(parent, drives):
 	for i in range(1, 7):
