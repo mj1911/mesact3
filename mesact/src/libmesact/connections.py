@@ -7,6 +7,9 @@ from libmesact import download
 from libmesact import utilities
 from libmesact import boards
 from libmesact import daughters
+from libmesact import flash
+
+
 
 def connect(parent):
 	# Menu Items
@@ -71,5 +74,14 @@ def connect(parent):
 	parent.board_cb.currentIndexChanged.connect(partial(boards.changed, parent))
 	parent.daughter_1_cb.currentIndexChanged.connect(partial(daughters.changed, parent, 4))
 	parent.daughter_2_cb.currentIndexChanged.connect(partial(daughters.changed, parent, 5))
+
+	# Firmware Tab
+	parent.firmware_cb.currentIndexChanged.connect(partial(flash.firmware_changed, parent))
+
+
+
+
+
+
 
 
