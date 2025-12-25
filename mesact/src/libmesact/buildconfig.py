@@ -1,12 +1,13 @@
 
-
+from libmesact import check
 
 def build(parent):
+	if not check.checkit(parent):
+		return
 
-	if parent.load_config_cb.isChecked():
-		parent.settings.setValue('STARTUP/config', iniFile)
-	else:
-		parent.settings.setValue('STARTUP/config', False)
+	if parent.backup_cb.isChecked():
+		utilities.backup_files(parent)
+
 
 
 

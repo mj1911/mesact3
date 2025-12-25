@@ -4,13 +4,12 @@ from PyQt6.QtGui import QAction, QIcon
 
 from libmesact import openini
 from libmesact import download
+from libmesact import check
 from libmesact import utilities
 from libmesact import boards
 from libmesact import daughters
 from libmesact import sscards
 from libmesact import flash
-
-
 
 def connect(parent):
 	# Menu Items
@@ -65,10 +64,10 @@ def connect(parent):
 	parent.actionTHCAD2.triggered.connect(partial(download.download_manual, 'thcad2man.pdf', parent))
 
 	# Tools Menu
+	parent.actionCheck.triggered.connect(partial(check.check_config, parent))
 
 	# Help Menu
 	parent.actionDocuments.triggered.connect(partial(utilities.open_manual, parent))
-
 
 	# Machine Tab
 	parent.machine_name_le.textChanged[str].connect(partial(utilities.machine_name_changed, parent))
@@ -79,12 +78,10 @@ def connect(parent):
 	# Firmware Tab
 	parent.firmware_cb.currentIndexChanged.connect(partial(flash.firmware_changed, parent))
 
-
 	# Smart Serial Tab
 	parent.ss_card_cb.currentIndexChanged.connect(partial(sscards.card_changed, parent))
 	parent.ss7i73_keypad_cb.currentIndexChanged.connect(partial(sscards.ss7i73_changed, parent))
 	parent.ss7i73lcd_cb.currentIndexChanged.connect(partial(sscards.ss7i73_changed, parent))
-
 
 	# Options Tab
 	parent.add_mdi_command_pb.clicked.connect(partial(utilities.add_mdi_row, parent))

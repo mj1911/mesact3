@@ -31,7 +31,6 @@ def card_changed(parent):
 	parent.ss_info.setText(sscards[parent.ss_card_cb.currentText()])
 	parent.ss_pages.setCurrentIndex(sspage[parent.ss_card_cb.currentText()])
 
-
 def ss7i73_changed(parent):
 	lcd = False
 	keypad = False
