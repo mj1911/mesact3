@@ -2,6 +2,9 @@ import os
 
 from libmesact import openini
 
+def setup_vars(parent):
+	parent.config_path = ''
+
 def hide(parent):
 	# set main tab visibility
 	parent.main_tw.setTabVisible(3, False)

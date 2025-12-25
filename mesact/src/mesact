@@ -45,6 +45,7 @@ class mesact(QMainWindow):
 		self.timer=QTimer()
 
 		self.show()
+		startup.setup_vars(self)
 		installed.get_versions(self)
 		combos.build_combos(self)
 		menus.build_menus(self)
