@@ -50,8 +50,8 @@ def open_manual(parent):
 def machine_name_changed(parent, text):
 	if text:
 		parent.machine_name_underscored = text.replace(' ','_').lower()
-		parent.configPath = os.path.expanduser('~/linuxcnc/configs') + '/' + parent.machine_name_underscored
-		parent.config_path_lb.setText(parent.configPath)
+		parent.config_path = os.path.expanduser('~/linuxcnc/configs') + '/' + parent.machine_name_underscored
+		parent.config_path_lb.setText(parent.config_path)
 	else:
 		parent.pathLabel.setText('')
 
@@ -68,6 +68,22 @@ def changed(parent): # if anything is changed add * to title
 	parent.status_lb.setText('Config Changed')
 	parent.actionBuild.setText('Build Config *')
 
+def backup_files(parent, config_path=None):
+	if not config_path:
+		config_path = parent.config_path
+	if not os.path.exists(config_path):
+		parent.info_pte.setPlainText('Nothing to Back Up')
+		return
+	backupDir = os.path.join(config_path, 'backups')
+	if not os.path.exists(backupDir):
+		os.mkdir(backupDir)
+	p1 = subprocess.Popen(['find',config_path,'-maxdepth','1','-type','f','-print'], stdout=subprocess.PIPE)
+	backupFile = os.path.join(backupDir, f'{datetime.now():%m-%d-%y-%H-%M-%S}')
+	p2 = subprocess.Popen(['zip','-j',backupFile,'-@'], stdin=p1.stdout, stdout=subprocess.PIPE)
+	p1.stdout.close()
+	parent.info_pte.appendPlainText('Backing up Confguration')
+	output = p2.communicate()[0]
+	parent.info_pte.appendPlainText(output.decode())
 
 
 
