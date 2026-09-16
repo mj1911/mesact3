@@ -25,7 +25,7 @@ def versions(parent):
 		mf = subprocess.check_output('mesaflash', encoding='UTF-8')
 		if len(mf) > 0:
 			version = mf.split()[2]
-			parent.mesaflash_version = tuple(int(i) for i in version.split('.'))
+			parent.mesaflash_version = tuple(int(i) for i in version.replace("-", ".").split(".") if i.isdigit())
 			parent.mesaflash_version_lb.setText(version)
 			parent.mesaflash = True
 			parent.flashed = False
